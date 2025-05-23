@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './App.css';
+import { YoutubeForm, FormikForm } from './components';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <nav>
+        <NavLink to="/">Basic Form</NavLink>
+        <NavLink to="/formik">Formik Form</NavLink>
+      </nav>
+      <Routes>
+        <Route path="/" element={<YoutubeForm/>}></Route>
+        <Route path="/formik" element={<FormikForm/>}></Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
