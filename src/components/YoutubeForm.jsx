@@ -39,39 +39,41 @@ const YoutubeForm = () => {
         <>
             <h1>useFormik Hook</h1>
             <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="name">Name</label>
-                <input
-                type="text"
-                id="name"
-                name="name"
-                // onChange={formik.handleChange}
-                // onBlur={formik.handleBlur}
-                // value={formik.values.name}
-                // the same as writing onChange, onBlur and value
-                {...formik.getFieldProps('name')}/>
-                {formik.touched.name && formik.errors.name ? <p className="error-message">{formik.errors.name}</p>: null}
+                <div className="container">
+                    <label htmlFor="name">Name</label>
+                    <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    // onChange={formik.handleChange}
+                    // onBlur={formik.handleBlur}
+                    // value={formik.values.name}
+                    // the same as writing onChange, onBlur and value
+                    {...formik.getFieldProps('name')}/>
+                    {formik.touched.name && formik.errors.name ? <p className="error-message">{formik.errors.name}</p>: null}
 
-                <label htmlFor="email">Email</label>
-                <input
-                type="text"
-                id="email"
-                name="email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}/>
-                {formik.touched.email && formik.errors.email? <p className="error-message">{formik.errors.email}</p>:null}
+                    <label htmlFor="email">Email</label>
+                    <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}/>
+                    {formik.touched.email && formik.errors.email? <p className="error-message">{formik.errors.email}</p>:null}
 
-                <label htmlFor="channel">Channel</label>
-                <input
-                type="text"
-                id="channel"
-                name="channel"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.channel}/>
-                {formik.touched.channel && formik.errors.channel?<p className="error-message">{formik.errors.channel}</p>:null}
+                    <label htmlFor="channel">Channel</label>
+                    <input
+                    type="text"
+                    id="channel"
+                    name="channel"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.channel}/>
+                    {formik.touched.channel && formik.errors.channel?<p className="error-message">{formik.errors.channel}</p>:null}
 
-                <button type="submit">Guardar</button>
+                    <button type="submit">Guardar</button>
+                </div>
             </form>
         </>
     )

@@ -40,7 +40,13 @@ h1 {
   color: goldenrod;
 }
 
-label, input {
+.container {
+  width: 40%;
+  display: block;
+  margin: auto;
+}
+
+label, input, textarea, button {
   display: block;
   margin: auto;
 }
@@ -49,24 +55,27 @@ label {
   color: goldenrod;
   font-weight: 500;
   font-size: medium;
-  display: inline-block;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-top: 10px;
 }
 
-input {
-  border-radius: 20px;
+input, textarea {
+  border-radius: 25px;
   border: 1px solid #CA7842;
-  padding: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 99%;
 }
 
 button {
-  width: 14%;
-  padding: 10px;
-  margin-top: 16px;
+  padding: 16px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   border-radius: 25px;
   background-color: #CA7842;
   color: #F4E7E1;
+  cursor: pointer;
+  width: 100%;
 }
 
 .error-message {
@@ -74,4 +83,14 @@ button {
   margin-top: 2px;
 }
 
+.row {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  gap: 20px
+}
 
+.col {
+  flex: 1;
+  width: 100%;
+}
