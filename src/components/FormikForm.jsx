@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from 'yup'
 import ErrorText from "./ErrorText";
 
@@ -12,7 +12,8 @@ const FormikForm = () => {
             facebook: '',
             twitter: ''
         },
-        phoneNumbers: []
+        phoneNumbers: [],
+        languages: ['']
     }
 
     const validationSchema = Yup.object({
@@ -28,11 +29,19 @@ const FormikForm = () => {
             'at-least-one-filled',
             'You must enter at least one phone number.',
             (arr) => Array.isArray(arr) && arr.some((val) => val && val.trim() !== '')
-        )
+        ),
     })
 
-    const onSubmit = values => {
+    const onSubmit = (values) => {
         console.log(values)
+    }
+
+    const customValidation = (val) => {
+        let error = ''
+        if(!val){
+            error = 'Required field.'
+        }
+        return error
     }
 
     return (
@@ -42,6 +51,8 @@ const FormikForm = () => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
+            // validateOnChange={false}
+            // validateOnBlur={false}
             >
                 <Form>
                     <div className="row">
@@ -105,12 +116,39 @@ const FormikForm = () => {
 
                     <div className="row">
                         <div className="col">
+                            <label htmlFor="languages">Languages</label>
+
+                            <FieldArray name="languages">
+                                {(props) => {
+                                    const { form, push, remove } = props
+                                    const { languages } = form.values
+                                    // console.log(props)
+                                    return (<div>
+                                    {
+                                        languages.map((name, index) => (<div key={index} className="languages">
+                                            <Field name={`languages[${index}]`} className="custom-input"/>
+                                            {
+                                                index>0 && <button type="button" onClick={() => remove(index)}>-</button>
+                                            }
+                                            <button type="button" onClick={() => push('')}>+</button>
+                                        </div>))
+                                    }
+                                    </div>)
+                                }}
+                            </FieldArray>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col">
                             <label htmlFor="comments">Comments</label>
                             <Field
                             as="textarea"
                             id="comments"
                             name="comments"
-                            placeholder="Your comments"/>
+                            placeholder="Your comments"
+                            validate={customValidation}/>
+                            <ErrorMessage name="comments" component={ErrorText}/>
                         </div>
                     </div>
 

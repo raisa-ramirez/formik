@@ -67,7 +67,7 @@ input, textarea {
   width: 99%;
 }
 
-button {
+button[type=submit] {
   padding: 16px;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -76,6 +76,7 @@ button {
   color: #F4E7E1;
   cursor: pointer;
   width: 100%;
+  border: none;
 }
 
 .error-message {
@@ -93,4 +94,21 @@ button {
 .col {
   flex: 1;
   width: 100%;
+}
+
+.languages {
+  background-color: #F5EEDD;
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  align-self: stretch;
+}
+
+.languages button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #CA7842;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
